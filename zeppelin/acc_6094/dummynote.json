@@ -1,0 +1,22 @@
+{
+  "paragraphs": [
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481832852121_6437282",
+      "id": "20161215-201412_530886442",
+      "dateCreated": "Dec 15, 2016 8:14:12 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "dummyScheduleExample1",
+  "id": "U12QCGED2E1481832850",
+  "angularObjects": {},
+  "config": {},
+  "info": {},
+  "source": "FCN"
+}
