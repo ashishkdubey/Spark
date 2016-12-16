@@ -1,0 +1,294 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pyspark\nhivecontext \u003d HiveContext(sc)\n\nhivecontext.sql(\"\"\" SET hive.exec.dynamic.partition.mode\u003dnonstrict \"\"\")\t\nhivecontext.sql(\"\"\" SET spark.sql.shuffle.partitions\u003d400 \"\"\")\nhivecontext.sql(\"\"\"SET fs.s3n.multipart.uploads.enabled\u003dtrue\"\"\")\n\nhivecontext.sql(\"show tables\")\n\n",
+      "dateUpdated": "Dec 16, 2016 8:14:53 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481852746492_-1906265966",
+      "id": "20161216-014546_1578799442",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 16, 2016 1:45:46 AM",
+      "dateStarted": "Dec 16, 2016 8:14:53 AM",
+      "dateFinished": "Dec 16, 2016 8:16:14 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\ncnt \u003d hivecontext.sql(\"select count(*) from tpcds_orc_1000.store\")",
+      "dateUpdated": "Dec 16, 2016 8:14:53 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481853044137_1899358214",
+      "id": "20161216-015044_122451586",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 16, 2016 1:50:44 AM",
+      "dateStarted": "Dec 16, 2016 8:14:56 AM",
+      "dateFinished": "Dec 16, 2016 8:16:17 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "cnt.show()",
+      "dateUpdated": "Dec 16, 2016 8:14:53 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481872033578_1050551839",
+      "id": "20161216-070713_2093806364",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+--------+\n|count(1)|\n+--------+\n|    1002|\n+--------+\n\n"
+      },
+      "dateCreated": "Dec 16, 2016 7:07:13 AM",
+      "dateStarted": "Dec 16, 2016 8:16:15 AM",
+      "dateFinished": "Dec 16, 2016 8:16:24 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Passing DF from python",
+      "text": "z.put(\"scalaCnt\", cnt._jdf)",
+      "dateUpdated": "Dec 16, 2016 8:14:53 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481872078113_-1158814263",
+      "id": "20161216-070758_1464587156",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 16, 2016 7:07:58 AM",
+      "dateStarted": "Dec 16, 2016 8:16:17 AM",
+      "dateFinished": "Dec 16, 2016 8:16:24 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Getting the same DF in scala",
+      "text": "%spark\nval scount \u003d z.get(\"scalaCnt\").asInstanceOf[org.apache.spark.sql.DataFrame]\nscount.show()",
+      "dateUpdated": "Dec 16, 2016 8:14:53 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "title": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481872209495_1723940680",
+      "id": "20161216-071009_1389880061",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "scount: org.apache.spark.sql.DataFrame \u003d [count(1): bigint]\n+--------+\n|count(1)|\n+--------+\n|    1002|\n+--------+\n\n"
+      },
+      "dateCreated": "Dec 16, 2016 7:10:09 AM",
+      "dateStarted": "Dec 16, 2016 8:16:24 AM",
+      "dateFinished": "Dec 16, 2016 8:16:29 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Sharing using Temp Table",
+      "text": "%pyspark\ncnt.registerTempTable(\"scala_count\")",
+      "dateUpdated": "Dec 16, 2016 8:14:53 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481872556135_1663792325",
+      "id": "20161216-071556_1597681557",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 16, 2016 7:15:56 AM",
+      "dateStarted": "Dec 16, 2016 8:16:25 AM",
+      "dateFinished": "Dec 16, 2016 8:16:25 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nval scala_count \u003d sqlContext.table(\"scala_count\")\nscala_count.show()",
+      "dateUpdated": "Dec 16, 2016 8:14:53 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481872769145_1900507011",
+      "id": "20161216-071929_37450744",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "scala_count: org.apache.spark.sql.DataFrame \u003d [count(1): bigint]\n+--------+\n|count(1)|\n+--------+\n|    1002|\n+--------+\n\n"
+      },
+      "dateCreated": "Dec 16, 2016 7:19:29 AM",
+      "dateStarted": "Dec 16, 2016 8:16:25 AM",
+      "dateFinished": "Dec 16, 2016 8:16:33 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "dateUpdated": "Dec 16, 2016 8:14:54 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481872802792_2122937848",
+      "id": "20161216-072002_1571768290",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark.py\", line 228, in \u003cmodule\u003e\n    stmts \u003d req.statements().split(\"\\n\")\nAttributeError: \u0027NoneType\u0027 object has no attribute \u0027split\u0027\n"
+      },
+      "dateCreated": "Dec 16, 2016 7:20:02 AM",
+      "dateStarted": "Dec 16, 2016 8:16:29 AM",
+      "dateFinished": "Dec 16, 2016 8:16:29 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "BasicPySQL",
+  "id": "5S718WN4DN1481852745",
+  "angularObjects": {
+    "2BYUNXV5X231461477288521393": [],
+    "2BY1PVTMQ231461477288521390": [],
+    "2BYEBPN9M231461477288521388": [],
+    "2C1KZG9VT231461477288520333": []
+  },
+  "config": {
+    "looknfeel": "default"
+  },
+  "info": {},
+  "source": "FCN"
+}
